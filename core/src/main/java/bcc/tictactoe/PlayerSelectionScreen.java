@@ -24,15 +24,29 @@ public class PlayerSelectionScreen extends ScreenAdapter{
     public PlayerSelectionScreen(TicTacToe game, int curPlayer) {//checkpoint 1
        //load skin
 
+       this.game = game;
+       this.stage = new Stage();
+       Gdx.input.setInputProcessor(stage);
        //add title saying something like "select player"
 
+       Label titles = new Label("Select Player " + (curPlayer + 1), skin);
+       titles.setFontScale(2);
+       titles.setColor(Color.WHITE);
        //if you would like a background color behind the title, you can use the helper method in the Constants file
+      
+       //Add table for layout and add variable titles to table
+       Table tables = new Table();
+       tables.setFillParent(true);
+       tables.top().padTop(50);
 
+       tables.add(titles).padBottom(50);
+       tables.row();
        //check out the documentation linked in the readme / on canvas
-
        //add buttons to select from the player types listed in constants.java. If there isSimulated is true, don't let human be an option. 
     
        //curplayer will either be 0 or 1
+
+       stage.addActor(tables);
     }
 
     @Override
