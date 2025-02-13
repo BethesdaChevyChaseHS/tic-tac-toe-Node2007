@@ -85,6 +85,7 @@ public class GameDisplay extends ScreenAdapter {
     public void handleBoardClick(int row, int col) {
         //checkpoint 2
         //this position was clicked, play the move, then call handle move made
+
     }
 
     public void handleMoveMade(){//checkpoint 2
@@ -105,6 +106,7 @@ public class GameDisplay extends ScreenAdapter {
     }
     public void resetGame() {
         //update board state, current player, etc. 
+        
     }
 
     public void updateBoardDisplay() {//updates the board, you should call this if a move is made. No need to change. 

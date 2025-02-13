@@ -29,7 +29,7 @@ public class MainMenu extends ScreenAdapter {
         // Load the skin
 
         //load image
-        Texture backgroundTexture = new Texture(Gdx.files.internal("space_tictactoe.png"));//note that this is stored in assets directory
+        Texture backgroundTexture = new Texture(Gdx.files.internal("tictactoeglow.png"));//note that this is stored in assets directory
         TextureRegionDrawable backgroundDrawable =
                 new TextureRegionDrawable(new TextureRegion(backgroundTexture));
 

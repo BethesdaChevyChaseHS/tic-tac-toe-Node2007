@@ -23,17 +23,16 @@ public class PlayerSelectionScreen extends ScreenAdapter{
 
     public PlayerSelectionScreen(TicTacToe game, int curPlayer) {//checkpoint 1
        //load skin
-
        this.game = game;
        this.stage = new Stage();
        Gdx.input.setInputProcessor(stage);
        //add title saying something like "select player"
-
+       skin = new Skin(Gdx.files.internal("skins/glassy/glassy-ui.json"));
        Label titles = new Label("Select Player " + (curPlayer + 1), skin);
        titles.setFontScale(2);
        titles.setColor(Color.WHITE);
+
        //if you would like a background color behind the title, you can use the helper method in the Constants file
-      
        //Add table for layout and add variable titles to table
        Table tables = new Table();
        tables.setFillParent(true);
@@ -46,13 +45,14 @@ public class PlayerSelectionScreen extends ScreenAdapter{
        String[] playerTypes = game.getIsSimulated() ? new String[]{"RandomAI"} : new String[]{"Human", "RandomAI"};
        for (String playerType : playerTypes) {
            TextButton button = new TextButton(playerType, skin);
-           button.addListener(new ClickListener()) {
+           button.addListener(new ClickListener() {
+               @Override
                public void clicked(InputEvent event, float x, float y) {
                    game.setPlayer(curPlayer, playerType);
                }
-           };
-           table.add(button).padBottom(20);
-           table.row();
+           });
+           tables.add(button).padBottom(20);
+           tables.row();
        }
        //curplayer will either be 0 or 1
 
