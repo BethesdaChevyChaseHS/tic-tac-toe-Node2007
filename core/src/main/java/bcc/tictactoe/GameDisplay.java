@@ -44,7 +44,11 @@ public class GameDisplay extends ScreenAdapter {
         this.game = game;
         
         initTableDisplay();
+        stage = new Stage();
+        Gdx.input.setInputProcessor(stage);
+        skin = new Skin(Gdx.files.internal("skins/glassy/glassy-ui.json"));
         updateBoardDisplay();
+
     }
 
     public void initTableDisplay() {// initializes tic tac toe board - no changes needed 

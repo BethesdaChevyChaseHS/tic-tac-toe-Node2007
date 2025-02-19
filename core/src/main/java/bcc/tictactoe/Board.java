@@ -4,28 +4,48 @@ public class Board {
     private Mark[][] grid;
     public Board() {
         //initialize grid to be 3x3 
+        grid = new Mark[3][3];
+        reset();
     }
 
     public void reset() {
         //should restart the game - set all cells to empty
-
-    }
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++) {
+                grid[row][col] = Mark.EMPTY;
+            }
+         }
+      }
 
     public boolean makeMove(Move move, Mark mark) {//make move on the grid
-        return false;
+        return makeMove(move.getRow(), move.getCol(), mark);
     }
 
     public boolean makeMove(int row, int col, Mark mark) {
         //make a move on the grid
+        if (row >= 0 && row < 3 && col >= 0 && col < 3 && grid[row][col] == Mark.EMPTY) {
+            grid[row][col] = mark;
+            return true;
+        }
         return false;
     }
 
     public void clearCell(int row, int col) {
        //set the given grid cell to empty
+       if (row >= 0 && row < 3 && col >= 0 && col < 3) {
+          grid[row][col] = Mark.EMPTY;
+      }
     }
     public boolean isFull() {
        //check if grid is full(and thus game is a tie)
-       return false;
+       for (int row = 0; row < 3; row++) {
+         for (int col = 0; col < 3; col++) {
+            if (grid[row][col] == Mark.EMPTY) {
+                return false;
+            }
+         }
+      }
+       return true;   
     }
 
     public Mark[][] getGrid() {
