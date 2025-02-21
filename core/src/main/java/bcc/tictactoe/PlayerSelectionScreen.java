@@ -31,7 +31,7 @@ public class PlayerSelectionScreen extends ScreenAdapter{
        Label titles = new Label("Select Player " + (curPlayer + 1), skin);
        titles.setFontScale(2);
        titles.setColor(Color.WHITE);
-
+        
        //if you would like a background color behind the title, you can use the helper method in the Constants file
        //Add table for layout and add variable titles to table
        Table tables = new Table();
