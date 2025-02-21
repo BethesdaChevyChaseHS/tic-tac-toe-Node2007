@@ -30,8 +30,8 @@ public class MainMenu extends ScreenAdapter {
 
         //load image
         Texture backgroundTexture = new Texture(Gdx.files.internal("tictactoeglow.png"));//note that this is stored in assets directory
-        TextureRegionDrawable backgroundDrawable =
-                new TextureRegionDrawable(new TextureRegion(backgroundTexture));
+        TextureRegionDrawable backgroundDrawable = 
+        new TextureRegionDrawable(new TextureRegion(backgroundTexture));
 
         //title
         Container<Label> titleLabel = Constants.createLabelWithBackgrounColor("Nebiyou's Tic Tac Toe", Color.BLACK,  skin);
