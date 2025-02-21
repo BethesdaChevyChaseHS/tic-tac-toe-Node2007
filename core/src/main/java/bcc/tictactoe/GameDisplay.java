@@ -46,8 +46,7 @@ public class GameDisplay extends ScreenAdapter {
         skin = new Skin(Gdx.files.internal("skins/glassy/glassy-ui.json"));
         Board board = new Board();
         game.setBoardState(board);
-        Container<Label> titles = Constants.createLabelWithBackgrounColor("Human(X) vs Human(O)", Color.WHITE, skin);
-        Texture backgroundTexture = new Texture(Gdx.files.internal("tictactoeglow.png"));
+        Texture backgroundTextures = new Texture(Gdx.files.internal("tictactoeglow.png"));
         initTableDisplay();
         updateBoardDisplay();
 
