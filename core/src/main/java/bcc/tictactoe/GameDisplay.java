@@ -46,7 +46,7 @@ public class GameDisplay extends ScreenAdapter {
         skin = new Skin(Gdx.files.internal("skins/glassy/glassy-ui.json"));
         Board board = new Board();
         game.setBoardState(board);
-        Texture backgroundTextures = new Texture(Gdx.files.internal("tictactoeglow.png"));
+        
         initTableDisplay();
         updateBoardDisplay();
 
