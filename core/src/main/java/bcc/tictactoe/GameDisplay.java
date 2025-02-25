@@ -36,6 +36,7 @@ public class GameDisplay extends ScreenAdapter {
     private Label resultLabel;
     private TextButton playAgainButton;
 
+    private Container<Label> curPlayerDisplay;
     
     public GameDisplay(TicTacToe game) {
         //set up the screen you like
@@ -43,11 +44,24 @@ public class GameDisplay extends ScreenAdapter {
         
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
+        //Load the skin
         skin = new Skin(Gdx.files.internal("skins/glassy/glassy-ui.json"));
+        //load image
+
+        Texture backgroundTexture = new Texture(Gdx.files.internal("tictactoeglow.png"));
+        Image backgroundImage = new Image(backgroundTexture);
+        backgroundImage.setFillParent(true);
+        stage.addActor(backgroundImage);
+
+        curPlayerDisplay = Constants.createLabelWithBackgrounColor("Current Player: X", Color.BLUE, skin);
+        curPlayerDisplay.setPosition(50, 400);
+        curPlayerDisplay.pack();
+        stage.addActor(curPlayerDisplay);
+
         Board board = new Board();
         game.setBoardState(board);
-        Texture backgroundTexture = new Texture(Gdx.files.internal("tictactoeglow.png"));
-        table.setBackground(backgroundTexture);
+
+        //load image
         initTableDisplay();
         updateBoardDisplay();
 
@@ -94,6 +108,7 @@ public class GameDisplay extends ScreenAdapter {
         if (game.getBoardState().makeMove(row, col, game.getCurPlayerMark())) {
             handleMoveMade();
          }
+        curPlayerDisplay.getActor().setText("Now this is different");
     } 
 
     public void handleMoveMade(){//checkpoint 2
@@ -187,6 +202,7 @@ public class GameDisplay extends ScreenAdapter {
 
         //checkpoint 3 - if it is not a humans turn, automate the AI's move here
         //call handleMoveMade afterwards
+
     }
 
     @Override
