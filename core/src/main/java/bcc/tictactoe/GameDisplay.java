@@ -46,8 +46,8 @@ public class GameDisplay extends ScreenAdapter {
         Gdx.input.setInputProcessor(stage);
         //Load the skin
         skin = new Skin(Gdx.files.internal("skins/glassy/glassy-ui.json"));
-        //load image
 
+        //load image
         Texture backgroundTexture = new Texture(Gdx.files.internal("tictactoeglow.png"));
         Image backgroundImage = new Image(backgroundTexture);
         backgroundImage.setFillParent(true);
