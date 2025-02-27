@@ -42,7 +42,7 @@ public class GameDisplay extends ScreenAdapter {
     public GameDisplay(TicTacToe game) {
         //set up the screen you like
         this.game = game;
-        System.out.println("Does this code run?");
+
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
         //Load the skin
@@ -111,7 +111,7 @@ public class GameDisplay extends ScreenAdapter {
     
     public void handleBoardClick(int row, int col) {
         //checkpoint 2
-        System.out.println("lajdfsgjsdhbf");
+
         //this position was clicked, play the move, then call handle move made
         if (game.getBoardState().makeMove(row, col, game.getCurPlayerMark())) {
             System.out.println("point 2 ");
@@ -124,7 +124,7 @@ public class GameDisplay extends ScreenAdapter {
         updateBoardDisplay();
         //check for a win or tie. If there is one, call showResult() with a message containing the winner, and update the player stats. 
         Mark winner = game.getBoardState().checkWin();
-        System.out.println("We made it here!");
+        
         if (winner != null) {
             if (winner == Mark.TIE) {
                 showResult("The game is a tie!");
