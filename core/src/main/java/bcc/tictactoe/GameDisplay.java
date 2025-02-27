@@ -37,11 +37,12 @@ public class GameDisplay extends ScreenAdapter {
     private TextButton playAgainButton;
 
     private Container<Label> curPlayerDisplay;
+    private Container<Label> humanPlayerDisplay;
     
     public GameDisplay(TicTacToe game) {
         //set up the screen you like
         this.game = game;
-        
+        System.out.println("Does this code run?");
         stage = new Stage();
         Gdx.input.setInputProcessor(stage);
         //Load the skin
@@ -58,12 +59,18 @@ public class GameDisplay extends ScreenAdapter {
         curPlayerDisplay.pack();
         stage.addActor(curPlayerDisplay);
 
+        humanPlayerDisplay = Constants.createLabelWithBackgrounColor("Human (X) vs. Human (0)", Color.BROWN, skin);
+        humanPlayerDisplay.setPosition(100, 30);
+        humanPlayerDisplay.pack();
+        stage.addActor(humanPlayerDisplay);
+
         Board board = new Board();
         game.setBoardState(board);
 
         //load image
         initTableDisplay();
         updateBoardDisplay();
+        System.out.println("At least made it here");
 
     }
 
@@ -104,11 +111,12 @@ public class GameDisplay extends ScreenAdapter {
     
     public void handleBoardClick(int row, int col) {
         //checkpoint 2
+        System.out.println("lajdfsgjsdhbf");
         //this position was clicked, play the move, then call handle move made
         if (game.getBoardState().makeMove(row, col, game.getCurPlayerMark())) {
+            System.out.println("point 2 ");
             handleMoveMade();
          }
-        curPlayerDisplay.getActor().setText("Now this is different");
     } 
 
     public void handleMoveMade(){//checkpoint 2
@@ -116,6 +124,7 @@ public class GameDisplay extends ScreenAdapter {
         updateBoardDisplay();
         //check for a win or tie. If there is one, call showResult() with a message containing the winner, and update the player stats. 
         Mark winner = game.getBoardState().checkWin();
+        System.out.println("We made it here!");
         if (winner != null) {
             if (winner == Mark.TIE) {
                 showResult("The game is a tie!");
@@ -134,8 +143,17 @@ public class GameDisplay extends ScreenAdapter {
             }
         } else {
             // No win or tie, continue the game
+
             game.nextPlayer();
+            System.out.println(game.getCurPlayer());
+            if (game.getCurPlayer() == 0) {
+                curPlayerDisplay.getActor().setText("Current Player: X");
+            }
+            else {
+                curPlayerDisplay.getActor().setText("Current Player: O");
+            }
         }
+
     }
         //checkpoint 3 modification
         //if game is simulated, instead of having a popup by calling showresult, start the next game if we have not run all the simulations
