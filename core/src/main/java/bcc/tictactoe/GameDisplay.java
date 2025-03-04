@@ -220,7 +220,11 @@ public class GameDisplay extends ScreenAdapter {
 
         //checkpoint 3 - if it is not a humans turn, automate the AI's move here
         //call handleMoveMade afterwards
-
+        if(!(game.getCurPlayerObj() instanceof Human)) {
+          Move m = game.getCurPlayerObj().makeMove(game.getBoardState(), game.getCurPlayerMark());
+          game.getBoardState().makeMove(m, game.getCurPlayerMark());
+          handleMoveMade();
+        }
     }
 
     @Override
