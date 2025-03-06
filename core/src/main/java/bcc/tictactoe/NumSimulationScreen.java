@@ -30,7 +30,7 @@ public class NumSimulationScreen extends ScreenAdapter {
         skin = new Skin(Gdx.files.internal("skins/glassy/glassy-ui.json"));
         
 
-        //checkpoint 3 - add more stuff!
+        //checkpoint 3 - add a title and continue button!
 
     
         TextField roundsInput = new TextField("", skin);

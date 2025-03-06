@@ -70,7 +70,6 @@ public class GameDisplay extends ScreenAdapter {
         //load image
         initTableDisplay();
         updateBoardDisplay();
-        System.out.println("At least made it here");
 
     }
 
@@ -114,7 +113,6 @@ public class GameDisplay extends ScreenAdapter {
 
         //this position was clicked, play the move, then call handle move made
         if (game.getBoardState().makeMove(row, col, game.getCurPlayerMark())) {
-            System.out.println("point 2 ");
             handleMoveMade();
          }
     } 
@@ -127,9 +125,18 @@ public class GameDisplay extends ScreenAdapter {
         
         if (winner != null) {
             if (winner == Mark.TIE) {
+                game.getPlayer1().incrementTies();
+                game.getPlayer2().incrementTies();
+                if (game.getIsSimulated() && game.getRound() < game.getNumberOfRounds()) {
+                    resetGame();
+                }
                 showResult("The game is a tie!");
+                gameOver = true;
             } else {
                 String winnerMessage = "Player " + (winner == Mark.X ? "1" : "2") + " wins!";
+                if (game.getIsSimulated() && game.getRound() < game.getNumberOfRounds()) {
+                    resetGame();
+                } 
                 showResult(winnerMessage);
 
                 // Update player stats (assuming the existence of such methods)
@@ -143,7 +150,6 @@ public class GameDisplay extends ScreenAdapter {
             }
         } else {
             // No win or tie, continue the game
-
             game.nextPlayer();
             System.out.println(game.getCurPlayer());
             if (game.getCurPlayer() == 0) {
@@ -158,7 +164,7 @@ public class GameDisplay extends ScreenAdapter {
         //checkpoint 3 modification
         //if game is simulated, instead of having a popup by calling showresult, start the next game if we have not run all the simulations
         
-    
+
 
     private void showResult(String result) {
         // Create an overlay to show the result. Include a button to play again. 
@@ -189,6 +195,7 @@ public class GameDisplay extends ScreenAdapter {
         game.resetCurPlayer();
         game.incrementRound();
         updateBoardDisplay();
+        gameOver = false;
     }
 
     public void updateBoardDisplay() {//updates the board, you should call this if a move is made. No need to change. 
@@ -220,7 +227,7 @@ public class GameDisplay extends ScreenAdapter {
 
         //checkpoint 3 - if it is not a humans turn, automate the AI's move here
         //call handleMoveMade afterwards
-        if(!(game.getCurPlayerObj() instanceof Human)) {
+        if(!(game.getCurPlayerObj() instanceof Human) && !gameOver) {
           Move m = game.getCurPlayerObj().makeMove(game.getBoardState(), game.getCurPlayerMark());
           game.getBoardState().makeMove(m, game.getCurPlayerMark());
           handleMoveMade();
