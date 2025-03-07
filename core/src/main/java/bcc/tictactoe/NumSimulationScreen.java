@@ -31,14 +31,38 @@ public class NumSimulationScreen extends ScreenAdapter {
         
 
         //checkpoint 3 - add a title and continue button!
+        Table table = new Table();
+        table.setFillParent(true);
+        stage.addActor(table);
 
-    
+        Label titleLabel = new Label("Simulation Setup", skin);
+        titleLabel.setFontScale(2);
+        table.add(titleLabel).padBottom(20).row();
+
         TextField roundsInput = new TextField("", skin);
         roundsInput.setMessageText("Enter number of rounds");
-       
-        stage.addActor(roundsInput);
-    }
+        table.add(roundsInput).padBottom(20).row();
 
+        TextButton continueButton = new TextButton("Continue", skin);
+        continueButton.addListener(new ClickListener() {
+            @Override
+            public void clicked(InputEvent event, float x, float y) {
+                String inputText = roundsInput.getText();
+                int numberOfRounds;
+                try {
+                    numberOfRounds = Integer.parseInt(inputText);
+                    game.setNumberOfRounds(numberOfRounds);
+                    game.setSimulated(true);
+                    game.startPlayerSelection();
+                } catch (NumberFormatException e) {
+                    roundsInput.setText("");
+                    roundsInput.setMessageText("Invalid number, try again");
+                }
+            }
+        });
+        table.add(continueButton).padTop(20);
+    }
+    
     @Override
     public void render(float delta) {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
