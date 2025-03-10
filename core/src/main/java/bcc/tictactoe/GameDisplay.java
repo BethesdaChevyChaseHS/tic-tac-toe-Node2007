@@ -38,7 +38,8 @@ public class GameDisplay extends ScreenAdapter {
 
     private Container<Label> curPlayerDisplay;
     private Container<Label> humanPlayerDisplay;
-    private Container<Label> randomPlayerDisplay;
+    private Container<Label> humanXPlayerDisplay;
+    private Container<Label> humanOPlayerDisplay;
     
     public GameDisplay(TicTacToe game) {
         //set up the screen you like
@@ -56,7 +57,7 @@ public class GameDisplay extends ScreenAdapter {
         stage.addActor(backgroundImage);
 
         curPlayerDisplay = Constants.createLabelWithBackgrounColor("Current Player: X", Color.BLUE, skin);
-        curPlayerDisplay.setPosition(50, 400);
+        curPlayerDisplay.setPosition(20, 400);
         curPlayerDisplay.pack();
         stage.addActor(curPlayerDisplay);
 
@@ -65,10 +66,16 @@ public class GameDisplay extends ScreenAdapter {
         humanPlayerDisplay.pack();
         stage.addActor(humanPlayerDisplay);
 
-        randomPlayerDisplay = Constants.createLabelWithBackgrounColor("Human (X) vs. RandomAI (0)", Color.BLACK, skin);
-        randomPlayerDisplay.setPosition(100, 30);
-        randomPlayerDisplay.pack();
-        stage.addActor(randomPlayerDisplay);
+        humanXPlayerDisplay = Constants.createLabelWithBackgrounColor("Human(X): 0W 0L 0D", Color.BLACK, skin);
+        humanXPlayerDisplay.setPosition(200, 400);
+        humanXPlayerDisplay.pack();
+        stage.addActor(humanXPlayerDisplay);
+
+        humanOPlayerDisplay = Constants.createLabelWithBackgrounColor("Human(O): 0W 0L 0D", Color.BLACK, skin);
+        humanOPlayerDisplay.setPosition(200, 365);
+        humanOPlayerDisplay.pack();
+        stage.addActor(humanOPlayerDisplay);
+
 
         Board board = new Board();
         game.setBoardState(board);
