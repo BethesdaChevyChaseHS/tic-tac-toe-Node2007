@@ -35,7 +35,7 @@ public class NumSimulationScreen extends ScreenAdapter {
         table.setFillParent(true);
         stage.addActor(table);
 
-        Label titleLabel = new Label("Simulation Setup", skin);
+        Label titleLabel = new Label("Simulating Games", skin);
         titleLabel.setFontScale(2);
         table.add(titleLabel).padBottom(20).row();
 
