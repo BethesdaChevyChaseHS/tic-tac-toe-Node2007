@@ -36,12 +36,10 @@ public class TicTacToe extends Game {
         //checkpoint 1 - set player, then determine what screen to go to next with setScreen(new ______)
         //NOTE - the only player types that you have programmed so far are Human and RandomAI
         if (curPlayer == 0) {
-            player1 = new Human();
+            player1 = option.equals("Human") ? new Human() : new RandomAI();
+        } else {
+            player2 = option.equals("Human") ? new Human() : new RandomAI();
         }
-        else {
-            player2 = new RandomAI();
-        }
-
         if (curPlayer == 1) {
             setScreen(new GameDisplay(this)); 
         }

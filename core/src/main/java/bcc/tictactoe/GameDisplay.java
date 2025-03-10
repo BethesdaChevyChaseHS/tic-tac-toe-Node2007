@@ -61,7 +61,7 @@ public class GameDisplay extends ScreenAdapter {
         curPlayerDisplay.pack();
         stage.addActor(curPlayerDisplay);
 
-        humanPlayerDisplay = Constants.createLabelWithBackgrounColor("Human (X) vs. Human (0)", Color.BROWN, skin);
+        humanPlayerDisplay = Constants.createLabelWithBackgrounColor(game.getPlayer1() + " (X) vs. " + game.getPlayer2() + " (0)", Color.BROWN, skin);
         humanPlayerDisplay.setPosition(100, 30);
         humanPlayerDisplay.pack();
         stage.addActor(humanPlayerDisplay);
