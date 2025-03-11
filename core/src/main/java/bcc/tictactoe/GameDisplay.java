@@ -172,7 +172,8 @@ public class GameDisplay extends ScreenAdapter {
                 curPlayerDisplay.getActor().setText("Current Player: O");
             }
         }
-
+        humanXPlayerDisplay.getActor().setText("X:  " + game.getPlayer1().getRecord());
+        humanOPlayerDisplay.getActor().setText("O:  " + game.getPlayer2().getRecord());
     }
         //checkpoint 3 modification
         //if game is simulated, instead of having a popup by calling showresult, start the next game if we have not run all the simulations
