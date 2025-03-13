@@ -21,8 +21,49 @@ public class SmartAI extends Player{
         return bestMove;
     }
     private int minimax(Board board, boolean aiTurn, Mark aiMark) {
-         return 0;
-    }
+        Mark winner = board.checkWin();
+        if (winner != null) { //the game was over
+            if(winner.equals(aiMark)) {
+                return 1;
+            } else if (winner.equals(Mark.TIE)) {
+                return 0;
+            } else {
+                return -1;
+            }
+        }
+
+        if(aiTurn) { //we are maximizing score
+            int bestScore = Integer.MIN_VALUE;
+            for (int row = 0; row < 3; row++) {
+                for (int col = 0; col < 3; col++) {
+                    if (board.getGrid()[row][col].equals(Mark.EMPTY)) {
+                    makeMove(board, aiMark);
+                    int score = minimax(board, false, aiMark);
+                    board.clearCell(row, col);
+                        if (score > bestScore) {
+                            bestScore = score;                
+                    }
+                }
+            }
+        }
+        return bestScore;
+      } else {
+        int lowestScore = Integer.MAX_VALUE;
+            for (int row = 0; row < 3; row++) {
+                for (int col = 0; col < 3; col++) {
+                    if (board.getGrid()[row][col].equals(Mark.EMPTY)) {
+                    makeMove(board, aiMark);
+                    int score = minimax(board, true, aiMark);
+                    board.clearCell(row, col);
+                        if (score < lowestScore) {
+                            lowestScore = score;                
+                    }
+                }
+            }
+        }
+        return lowestScore;
+      }
+  }
     public String toString(){
         return "Smart AI";
     }
