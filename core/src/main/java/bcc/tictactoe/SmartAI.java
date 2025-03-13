@@ -7,7 +7,7 @@ public class SmartAI extends Player{
         for (int row = 0; row < 3; row++) {
             for (int col = 0; col < 3; col++) {
                 if (board.getGrid()[row][col].equals(Mark.EMPTY)) {
-                    makeMove(board, mark);
+                    board.makeMove(row, col, mark);
                     int score = minimax(board, false, mark);
                     board.clearCell(row, col);
                     if (score > bestScore) {
@@ -49,10 +49,15 @@ public class SmartAI extends Player{
         return bestScore;
       } else {
         int lowestScore = Integer.MAX_VALUE;
-            for (int row = 0; row < 3; row++) {
-                for (int col = 0; col < 3; col++) {
-                    if (board.getGrid()[row][col].equals(Mark.EMPTY)) {
-                    makeMove(board, aiMark);
+        for (int row = 0; row < 3; row++) {
+            for (int col = 0; col < 3; col++) {
+                if (board.getGrid()[row][col].equals(Mark.EMPTY)) {
+                    //opponent's turn
+                    if (aiMark.equals(Mark.X)) {
+                        board.makeMove(row, col, Mark.O);
+                    } else {
+                        board.makeMove(row, col, Mark.X);
+                    }
                     int score = minimax(board, true, aiMark);
                     board.clearCell(row, col);
                         if (score < lowestScore) {
