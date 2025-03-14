@@ -42,7 +42,12 @@ public class PlayerSelectionScreen extends ScreenAdapter{
        tables.row();
        //check out the documentation linked in the readme / on canvas
        //add buttons to select from the player types listed in constants.java. If there isSimulated is true, don't let human be an option. 
-       String[] playerTypes = game.getIsSimulated() ? new String[]{"RandomAI"} : new String[]{"Human", "RandomAI"};
+         String[] playerTypes;
+         if (game.getIsSimulated()) {
+              playerTypes = new String[] {"RandomAI", "SlightlySmartAI", "SmartAI"};
+         } else {
+              playerTypes = new String[] {"Human", "RandomAI", "SlightlySmartAI", "SmartAI"};
+         }
        for (String playerType : playerTypes) {
            TextButton button = new TextButton(playerType, skin);
            button.addListener(new ClickListener() {
@@ -51,9 +56,10 @@ public class PlayerSelectionScreen extends ScreenAdapter{
                    game.setPlayer(curPlayer, playerType);
                }
            });
-           tables.add(button).padBottom(20);
+           tables.add(button).padBottom(20).height(80);
            tables.row();
        }
+       
        //curplayer will either be 0 or 1
 
        stage.addActor(tables);

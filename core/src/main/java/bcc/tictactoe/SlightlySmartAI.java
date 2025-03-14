@@ -17,6 +17,7 @@ public class SlightlySmartAI extends Player {
         }
         return new Move(getNumTies(), getNumLosses());
     }
+    
     public String toString() {
         return "Slightly Smart AI";
     }
