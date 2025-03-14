@@ -56,9 +56,12 @@ public class TicTacToe extends Game {
                 player2 = new SmartAI();
             }
         }
-
         if (curPlayer == 1) {
-            setScreen(new GameDisplay(this)); 
+            if (isSimulated) {
+                setScreen(new NumSimulationScreen(this));
+            } else {
+                setScreen(new GameDisplay(this));
+            }
         }
         else {
             setScreen(new PlayerSelectionScreen(this, 1));

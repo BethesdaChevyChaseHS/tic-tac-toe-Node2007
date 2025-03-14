@@ -176,7 +176,7 @@ public class GameDisplay extends ScreenAdapter {
         humanOPlayerDisplay.getActor().setText("O:  " + game.getPlayer2().getRecord());
     }
         //checkpoint 3 modification
-        //if game is simulated, instead of having a popup by calling showresult, show this screen before going to GameDisplay and start the next game if we have not run all the simulations
+        //if game is simulated, instead of having a popup by calling showresult, start the next game if we have not run all the simulations
         
 
         

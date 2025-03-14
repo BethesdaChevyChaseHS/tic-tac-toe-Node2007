@@ -35,12 +35,12 @@ public class NumSimulationScreen extends ScreenAdapter {
         table.setFillParent(true);
         stage.addActor(table);
 
-        Label titleLabel = new Label("Simulating Games", skin);
+        Label titleLabel = new Label("How many rounds?", skin);
         titleLabel.setFontScale(2);
         table.add(titleLabel).padBottom(20).row();
 
         TextField roundsInput = new TextField("", skin);
-        roundsInput.setMessageText("Enter number of rounds");
+        roundsInput.setMessageText("Simulating Rounds");
         table.add(roundsInput).padBottom(20).row();
 
         TextButton continueButton = new TextButton("Continue", skin);
@@ -53,7 +53,7 @@ public class NumSimulationScreen extends ScreenAdapter {
                     numberOfRounds = Integer.parseInt(inputText);
                     game.setNumberOfRounds(numberOfRounds);
                     game.setSimulated(true);
-                    game.startPlayerSelection();
+                    game.setScreen(new GameDisplay(game));
                 } catch (NumberFormatException e) {
                     roundsInput.setText("");
                     roundsInput.setMessageText("Invalid number, try again");
