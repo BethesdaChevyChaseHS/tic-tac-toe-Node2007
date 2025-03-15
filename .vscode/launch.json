@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Lwjgl3Launcher",
+            "request": "launch",
+            "mainClass": "bcc.tictactoe.lwjgl3.Lwjgl3Launcher",
+            "projectName": "LIBGDX-Hello-World-lwjgl3"
+        },
+        {
+            "type": "java",
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}"

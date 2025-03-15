@@ -174,12 +174,14 @@ public class GameDisplay extends ScreenAdapter {
         }
         humanXPlayerDisplay.getActor().setText("X:  " + game.getPlayer1().getRecord());
         humanOPlayerDisplay.getActor().setText("O:  " + game.getPlayer2().getRecord());
-    }
+
         //checkpoint 3 modification
         //if game is simulated, instead of having a popup by calling showresult, start the next game if we have not run all the simulations
-        
-
-        
+        if (game.getIsSimulated() && game.getRound() < game.getNumberOfRounds() && !gameOver) {
+            game.incrementRound();
+            resetGame();
+        }
+    }
     private void showResult(String result) {
         // Create an overlay to show the result. Include a button to play again. 
         // when the button is clicked, it should dissappear - you can do this using the .remove() command. 
