@@ -243,13 +243,16 @@ public class GameDisplay extends ScreenAdapter {
 
         //checkpoint 3 - if it is not a humans turn, automate the AI's move here
         //call handleMoveMade afterwards
-        if(!(game.getCurPlayerObj() instanceof Human) && !gameOver) {
-          Move m = game.getCurPlayerObj().makeMove(game.getBoardState(), game.getCurPlayerMark());
-          game.getBoardState().makeMove(m, game.getCurPlayerMark());
-          handleMoveMade();
+        if (!(game.getCurPlayerObj() instanceof Human) && !gameOver) {
+            Move m = game.getCurPlayerObj().makeMove(game.getBoardState(), game.getCurPlayerMark());
+            if (m != null) {
+                game.getBoardState().makeMove(m, game.getCurPlayerMark());
+                handleMoveMade();
+            } else {
+                System.err.println("AI move is null");
+            }
         }
     }
-
     @Override
     public void dispose() {
         stage.dispose();
