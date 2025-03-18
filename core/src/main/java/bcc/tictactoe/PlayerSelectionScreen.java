@@ -56,7 +56,7 @@ public class PlayerSelectionScreen extends ScreenAdapter{
                    game.setPlayer(curPlayer, playerType);
                }
            });
-           tables.add(button).padBottom(20).height(80);
+           tables.add(button).padBottom(5).height(80);
            tables.row();
        }
        

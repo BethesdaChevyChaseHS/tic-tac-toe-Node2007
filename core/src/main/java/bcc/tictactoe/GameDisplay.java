@@ -195,7 +195,6 @@ public class GameDisplay extends ScreenAdapter {
         resultTable.row();
 
         TextButton playAgainButton = new TextButton("Play Again!", skin);
-        playAgainButton.setPosition(100, 100);
         stage.addActor(playAgainButton);
         playAgainButton.addListener(new ClickListener() {
             @Override

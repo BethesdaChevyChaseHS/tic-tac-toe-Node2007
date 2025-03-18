@@ -38,24 +38,24 @@ public class NumSimulationScreen extends ScreenAdapter {
         Label titleLabel = new Label("How many rounds?", skin);
         titleLabel.setFontScale(2);
         table.add(titleLabel).padBottom(20).row();
-        stage.addActor(titleLabel);
 
         TextField roundsInput = new TextField("", skin);
         roundsInput.setMessageText("Simulating Rounds");
         table.add(roundsInput).padBottom(20).row();
-        stage.addActor(roundsInput);
 
         TextButton continueButton = new TextButton("Continue", skin);
         continueButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                    int numberOfRounds = Integer.parseInt(roundsInput.getText());
-                    game.setNumberOfRounds(numberOfRounds);
-                    game.setSimulated(true);
-                    game.setScreen(new GameDisplay(game));                 
+                String inputText = roundsInput.getText();
+                int numberOfRounds = Integer.parseInt(inputText);
+                game.setNumberOfRounds(numberOfRounds);
+                game.setSimulated(true);
+                System.out.print(game.getRound());
+                game.setScreen(new GameDisplay(game));
             }
         });
-        stage.addActor(continueButton);
+        table.add(continueButton).padTop(20);
     }
     
     @Override
