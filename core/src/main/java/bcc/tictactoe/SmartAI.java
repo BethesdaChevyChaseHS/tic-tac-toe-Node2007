@@ -37,7 +37,7 @@ public class SmartAI extends Player{
             for (int row = 0; row < 3; row++) {
                 for (int col = 0; col < 3; col++) {
                     if (board.getGrid()[row][col].equals(Mark.EMPTY)) {
-                    makeMove(board, aiMark);
+                    board.makeMove(row, col, aiMark);
                     int score = minimax(board, false, aiMark);
                     board.clearCell(row, col);
                         if (score > bestScore) {

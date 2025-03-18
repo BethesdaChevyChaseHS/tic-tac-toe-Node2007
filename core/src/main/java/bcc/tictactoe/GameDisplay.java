@@ -185,6 +185,7 @@ public class GameDisplay extends ScreenAdapter {
     private void showResult(String result) {
         // Create an overlay to show the result. Include a button to play again. 
         // when the button is clicked, it should dissappear - you can do this using the .remove() command. 
+        gameOver = true;
         Table resultTable = new Table();
         resultTable.setFillParent(true);
 
@@ -193,11 +194,13 @@ public class GameDisplay extends ScreenAdapter {
         resultTable.add(resultLabel).padBottom(20);
         resultTable.row();
 
-        TextButton playAgainButton = new TextButton("Play Again", skin);
+        TextButton playAgainButton = new TextButton("Play Again!", skin);
+        playAgainButton.setPosition(100, 100);
+        stage.addActor(playAgainButton);
         playAgainButton.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                resultTable.remove();
+                playAgainButton.remove();
                 resetGame();
             }
         });

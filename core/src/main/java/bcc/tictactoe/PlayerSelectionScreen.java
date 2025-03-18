@@ -46,7 +46,7 @@ public class PlayerSelectionScreen extends ScreenAdapter{
          if (game.getIsSimulated()) {
               playerTypes = new String[] {"RandomAI", "SlightlySmartAI", "SmartAI"};
          } else {
-              playerTypes = new String[] {"Human", "RandomAI", "SlightlySmartAI"};
+              playerTypes = new String[] {"Human", "RandomAI", "SlightlySmartAI", "SmartAI"};
          }
        for (String playerType : playerTypes) {
            TextButton button = new TextButton(playerType, skin);
